@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { Card, Button, Alert } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
-
+// stuff
 export default function Dashboard() {
     const { currentUser, logout } = useAuth()
     const [error, setError] = useState('')
     const history = useHistory
-
+git 
     async function handleLogOut(){
         setError('')
         try {
