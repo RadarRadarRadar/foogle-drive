@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { Card, Button, Alert } from 'react-bootstrap'
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../../context/AuthContext'
 import { Link, useHistory } from 'react-router-dom'
-// stuff
-export default function Dashboard() {
+import CenteredContainer from './CenteredContainer'
+
+
+export default function Profile() {
     const { currentUser, logout } = useAuth()
     const [error, setError] = useState('')
     const history = useHistory
@@ -17,7 +19,7 @@ export default function Dashboard() {
         }
     }
     return (
-        <>
+        <CenteredContainer>
             <Card>
                 <Card.Body>
                     <h2 className="text-center mb-4">Profile</h2>
@@ -29,6 +31,6 @@ export default function Dashboard() {
             <div className="w-100 text-center mt-2">
                 <Button variant='link' onClick={handleLogOut}>Log Out</Button>
             </div>
-        </>
+        </CenteredContainer>
     )
 }
