@@ -4,15 +4,22 @@ import { Container } from 'react-bootstrap'
 import AddFolderButton from './AddFolderButton'
 import { useFolder } from '../../hooks/useFolder'
 import Folder from './Folder'
+import { useParams, useLocation } from 'react-router-dom'
+import FolderBreadCrumbs from './FolderBreadCrumbs'
 
 export default function Dashboard() {
-    const { folder, childFolders } = useFolder("HLrakvKMNe1DyIVh2LX7")
+    const { folderId } = useParams()
+    const { state = {} } =useLocation()
+    const { folder, childFolders } = useFolder(folderId, state.folder)
     console.log(childFolders)
     return (
         <>
             <Navbar />
             <Container fluid>
-                <AddFolderButton currentFolder={folder}/>
+                <div className='d-flex align-items-center'>
+                    <FolderBreadCrumbs currentFolder={folder} />
+                    <AddFolderButton currentFolder={folder}/>
+                </div>
                 {childFolders.length > 0 && (
                     <div className='d-flex flex-wrap'>
                         {childFolders.map(childFolder => (
