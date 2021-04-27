@@ -6,6 +6,7 @@ import Login from './authentication/Login'
 import PrivateRoute from './authentication/PrivateRoute'
 import ForgotPassword from './authentication/ForgotPassword'
 import UpdateProfile from './authentication/UpdateProfile'
+import Dashboard from "./foogle-drive/Dashboard";
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
       <AuthProvider>
         <Switch>
           {/* Foogle Drive Routes */}
+          <PrivateRoute exact path='/' component={Dashboard}/>
 
-          
           {/* Profile Routes */}
           <PrivateRoute path="/user" component={Profile}/>
           <PrivateRoute path="/update-profile" component={UpdateProfile}/>
